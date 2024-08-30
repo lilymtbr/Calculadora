@@ -1,3 +1,19 @@
+/*
+* Autora: Lisa Matubara
+* Período: 3º A
+* Disciplina: Infraestrutura de Hardware
+* Atividade: Calculadora didática de conversão entre bases e ponto flutuante de precisão simpes e dupla
+* Data: 30/08/24
+*
+* Revisões e Atualizações:
+* 1ª Questão A: Fri Aug 30 09:08:12 2024
+* 1ª Questão B: Fri Aug 30 10:05:57 2024
+* 1ª Questão C: Fri Aug 30 10:30:25 2024
+* 1ª Questão D: Fri Aug 30 10:54:38 2024
+* 2ª Questão: Fri Aug 30 11:31:16 2024
+* 3ª Questão: Fri Aug 30 14:24:48 2024
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
