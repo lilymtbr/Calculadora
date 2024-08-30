@@ -10,7 +10,6 @@ void base_10_para_base2 (int numero) {
         numero=numero/2;
         i++;
     }
-
     for (i = i - 1; i >= 0; i--) {
         printf("%d", vetor[i]);
     }
@@ -69,9 +68,28 @@ void base_10_para_base16 (int numero) {
     printf("\n");
 }
 
-int base_10_para_BCD (int numero) {
-    printf("Nada ainda.\n");
-    return 0;
+void base_10_para_BCD (int numero) {
+    int vetor[100];
+    int digito;
+    int i = 0;
+    while (numero>0) {
+        digito = numero%10;
+        for (int j = 0; j<4; j++) {
+            vetor[i] = digito % 2;
+            digito=digito/2;
+            i++;
+        }
+        numero=numero/10;
+    }
+    int cont=1;
+    for (i = i - 1; i >= 0; i--) {
+        printf("%d", vetor[i]);
+        if (cont % 4 == 0) {
+            printf(" ");
+        }
+        cont++;
+    }
+    printf("\n");
 }
 
 int base_10_para_base_sinal_16bits (int numero) {
@@ -120,6 +138,7 @@ int main(void) {
             case 4:
                 printf("Digite um número inteiro: \n");
                 scanf("%d", &numero);
+                base_10_para_BCD (numero);
                 break;
 
             case 5:
