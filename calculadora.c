@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <math.h>
 
 void base_10_para_base2 (int numero) {
     int vetor[100];
@@ -135,14 +135,122 @@ void base_10_para_base_sinal_16bits (int numero) {
     printf("\n");
 }
 
-double real_para_float (int numero) {
-    printf("Nada ainda.\n");
-    return 0;
+void real_para_float (double numero) {
+    int vetor[32];
+    int vetor2[8];
+    int vetor3[23];
+    int i = 0;
+    int cont = -1;
+    int numero_inteiro = (int)numero;
+    double fracao = numero - (int)numero;
+
+    if (numero_inteiro >= 0) {
+        printf("0 ");
+    }
+
+    else {
+        printf("1 ");
+        numero_inteiro = -numero_inteiro;
+        fracao = -fracao;
+        }
+
+    while (numero_inteiro > 0) {
+            vetor[i] = numero_inteiro % 2;
+            numero_inteiro=numero_inteiro/2;
+            i++;
+            cont++;
+    }
+    
+    int expoente = cont + 127;
+
+    for (int j = 0; j < 8; j++) {
+            vetor2[j] = expoente % 2;
+            expoente = expoente/2;
+    }
+
+    for (int k = 7; k >= 0; k--) {
+        printf("%d", vetor2[k]);
+    }
+
+    printf(" ");
+
+    for (int l = cont-1; l >= 0; l--) {
+        printf("%d", vetor[l]);
+    }
+
+    for (int m = 0; m < 23 - cont; m++) {
+        fracao = fracao * 2;
+        if (fracao >= 1.0) {
+            vetor3[m]=  1;
+            fracao = fracao - 1.0;
+        }
+        else {
+            vetor3[m] = 0;
+        }
+    }
+    for (int n = 0; n < 23 - cont; n++) {
+        printf("%d", vetor3[n]);
+    }
+    printf("\n");
 }
 
-double real_para_double (int numero2) {
-    printf("Nada ainda.\n");
-    return 0;
+void real_para_double (double numero) {
+    int vetor[32];
+    int vetor2[11];
+    int vetor3[52];
+    int i = 0;
+    int cont = -1;
+    int numero_inteiro = (int)numero;
+    double fracao = numero - (int)numero;
+
+    if (numero_inteiro >= 0) {
+        printf("0 ");
+    }
+
+    else {
+        printf("1 ");
+        numero_inteiro = -numero_inteiro;
+        fracao = -fracao;
+        }
+
+    while (numero_inteiro > 0) {
+            vetor[i] = numero_inteiro % 2;
+            numero_inteiro=numero_inteiro/2;
+            i++;
+            cont++;
+    }
+    
+    int expoente = cont + 1023;
+
+    for (int j = 0; j < 11; j++) {
+            vetor2[j] = expoente % 2;
+            expoente = expoente/2;
+    }
+
+    for (int k = 10; k >= 0; k--) {
+        printf("%d", vetor2[k]);
+    }
+
+    printf(" ");
+
+    for (int l = cont-1; l >= 0; l--) {
+        printf("%d", vetor[l]);
+    }
+
+    for (int m = 0; m < 52-cont; m++) {
+        fracao = fracao * 2;
+        if (fracao >= 1.0) {
+            vetor3[m]=  1;
+            fracao = fracao - 1.0;
+        }
+        else {
+            vetor3[m] = 0;
+        }
+    }
+    for (int n = 0; n < 52-cont; n++) {
+        printf("%d", vetor3[n]);
+    }
+    printf("\n");
 }
 
 int main(void) {
@@ -188,6 +296,8 @@ int main(void) {
             case 6:
                 printf("Digite um número real: \n");
                 scanf("%lf", &numero2);
+                real_para_float (numero2);
+                real_para_double (numero2);
                 break;
             
             case 7:
