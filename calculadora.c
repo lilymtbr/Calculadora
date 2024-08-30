@@ -18,8 +18,18 @@ void base_10_para_base2 (int numero) {
 }
 
 int base_10_para_base8 (int numero) {
-    printf("Nada ainda.\n");
-    return 0;
+    int vetor[100];
+    int i = 0;
+    while (numero>0) {
+        vetor[i] = numero % 8;
+        numero=numero/8;
+        i++;
+    }
+
+    for (i = i - 1; i >= 0; i--) {
+        printf("%d", vetor[i]);
+    }
+    printf("\n");
 }
 
 int base_10_para_base16 (int numero) {
@@ -66,6 +76,7 @@ int main(void) {
             case 2:
                 printf("Digite um número inteiro: \n");
                 scanf("%d", &numero);
+                base_10_para_base8 (numero);
                 break;
 
             case 3:
