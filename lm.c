@@ -19,13 +19,16 @@
 #include <math.h>
 
 void base_10_para_base2 (int numero) {
+    printf("Primeiro, cria-se um vetor para armazenar os dígitos binários e uma variável i, que representa o índice dos elementos do vetor.\n");
     int vetor[100];
     int i = 0;
+    printf("Em seguida, divide-se o número por 2 repetidamente, armazenando os restos no vetor até que o número seja igual a zero.\n");
     while (numero>0) {
         vetor[i] = numero % 2;
         numero=numero/2;
         i++;
     }
+    printf("Por fim, imprime-se o vetor em ordem inversa para formar o número binário.\nResposta:\n");
     for (i = i - 1; i >= 0; i--) {
         printf("%d", vetor[i]);
     }
@@ -33,24 +36,38 @@ void base_10_para_base2 (int numero) {
 }
 
 void base_10_para_base8 (int numero) {
+    printf("Primeiro, cria-se um vetor para armazenar os dígitos binários e uma variável i, que representa o índice dos elementos do vetor.\n");
+    
     int vetor[100];
     int i = 0;
+    
+    printf("Em seguida, divide-se o número por 8 sucessivamente até que o número seja menor ou igual a zero, armazenando os restos nos índices do vetor.\n");
+
     while (numero>0) {
         vetor[i] = numero % 8;
         numero=numero/8;
         i++;
     }
-
+    
+    printf("Por fim, imprimem-se os elementos do vetor em ordem inversa para formar o número na base 8.\nResposta:\n");
+    
     for (i = i - 1; i >= 0; i--) {
         printf("%d", vetor[i]);
     }
+    
     printf("\n");
 }
 
 void base_10_para_base16 (int numero) {
+    printf("Primeiro, cria-se um vetor de caracteres para armazenar os dígitos hexadecimais e uma variável i, que representa o índice dos elementos do vetor.\n");
+    
     char vetor[100];
     int elemento;
     int i = 0;
+
+    printf("Em seguida, divide-se o número por 16 sucessivamente até que o número seja menor ou igual a zero, armazenando os restos nos índices do vetor.\n");
+    printf("Quando o resto for 10, deve-se armazenar o caractere 'A'; se for 11, 'B'; e assim sucessivamente até que o resto 15 corresponda ao caractere 'F'.\n");
+
     while (numero>0) {
         elemento = numero % 16;
         if (elemento == 10) {
@@ -78,6 +95,8 @@ void base_10_para_base16 (int numero) {
         i++;
     }
 
+    printf("Por fim, imprimem-se os elementos do vetor em ordem inversa para formar o número na base 16.\nResposta:\n");
+
     for (i = i - 1; i >= 0; i--) {
         printf("%c", vetor[i]);
     }
@@ -85,9 +104,15 @@ void base_10_para_base16 (int numero) {
 }
 
 void base_10_para_BCD (int numero) {
+    printf("Primeiro, cria-se um vetor de inteiros para armazenar os dígitos binários e uma variável i, que representa o índice dos elementos do vetor.\n");
+
     int vetor[100];
     int digito;
     int i = 0;
+
+    printf("Em seguida, verifica-se sucessivamente o resto da divisão do número por 10 para obter o último dígito e transformá-lo em binário.\n");
+    printf("Enquanto o número for maior que zero, o resto é verificado para pegar cada dígito e convertê-lo em binário de 4 bits.\n");
+    
     while (numero>0) {
         digito = numero%10;
         for (int j = 0; j<4; j++) {
@@ -97,6 +122,7 @@ void base_10_para_BCD (int numero) {
         }
         numero=numero/10;
     }
+    printf("Por fim, imprimem-se os bits em ordem inversa para formar o número em BCD.\nResposta:\n");
     int cont=1;
     for (i = i - 1; i >= 0; i--) {
         printf("%d", vetor[i]);
@@ -111,6 +137,9 @@ void base_10_para_BCD (int numero) {
 void base_10_para_base_sinal_16bits (int numero) {
     int vetor[16];
     int i = 0;
+    
+    printf("Caso o número for positivo, então converte-se diretamente para binário e armazena-se nos 16 bits do vetor.\n");
+
 
     if (numero >= 0) {
         while (i<16) {
@@ -120,6 +149,8 @@ void base_10_para_base_sinal_16bits (int numero) {
         }
     }
 
+    printf("Caso o número for negativo, então primeiro converte-se o valor absoluto para binário e armazena-se nos 16 bits do vetor.\n");
+
     else {
         numero = -numero;
         while (i < 16) {
@@ -127,6 +158,9 @@ void base_10_para_base_sinal_16bits (int numero) {
             numero=numero/2;
             i++;
         }
+
+        printf("Em seguida, aplica-se o complemento de 2 para representar o número negativo.\n");
+        printf("Mantêm-se os números inalterados até encontrar o primeiro dígito 1; ao encontrá-lo, invertem-se todos os dígitos subsequentes.\n");
 
         i=0;
         while (vetor[i] != 1 && i < 16) {
@@ -145,6 +179,8 @@ void base_10_para_base_sinal_16bits (int numero) {
         }
     }
 
+    printf("Por fim, imprimem-se os bits do vetor em ordem inversa para obter a representação em complemento de 2.\nResposta:\n");
+
     for (i = i-1; i >= 0; i--) {
         printf("%d", vetor[i]);
     }
@@ -152,6 +188,13 @@ void base_10_para_base_sinal_16bits (int numero) {
 }
 
 void real_para_float (double numero) {
+    printf("Reserva-se o primeiro bit para sinal (0 para positivo, 1 para negativo.\n");
+    printf("Separa-se a parte inteira e a parte fracionária do número.\n");
+    printf("Converte-se a parte inteira para binário e calcula o expoente ajustado com o bias de 127.\n");
+    printf("Converte-se o expoente ajustado para binário.\n");
+    printf("Constrói-se a mantissa a partir da parte fracionária do número e completa com a parte inteira.\n");
+    printf("Imprime-ese o sinal (1 bit), o expoente (8 bits) e a mantissa (23 bits) na ordem correta para a representação em float.\n");
+
     int vetor[32];
     int vetor2[8];
     int vetor3[23];
@@ -176,7 +219,7 @@ void real_para_float (double numero) {
             i++;
             cont++;
     }
-    
+
     int expoente = cont + 127;
 
     for (int j = 0; j < 8; j++) {
@@ -211,6 +254,13 @@ void real_para_float (double numero) {
 }
 
 void real_para_double (double numero) {
+    printf("Reserva-se o primeiro bit para sinal (0 para positivo, 1 para negativo.\n");
+    printf("Separa-se a parte inteira e a parte fracionária do número.\n");
+    printf("Converte-se a parte inteira para binário e calcula o expoente ajustado com o bias de 1023.\n");
+    printf("Converte-se o expoente ajustado para binário.\n");
+    printf("Constrói-se a mantissa a partir da parte fracionária do número e completa com a parte inteira.\n");
+    printf("Imprime-ese o sinal (1 bit), o expoente (11 bits) e a mantissa (52 bits) na ordem correta para a representação em double.\n");
+
     int vetor[32];
     int vetor2[11];
     int vetor3[52];
