@@ -92,9 +92,47 @@ void base_10_para_BCD (int numero) {
     printf("\n");
 }
 
-int base_10_para_base_sinal_16bits (int numero) {
-    printf("Nada ainda.\n");
-    return 0;
+void base_10_para_base_sinal_16bits (int numero) {
+    int vetor[16];
+    int i = 0;
+
+    if (numero >= 0) {
+        while (i<16) {
+            vetor[i] = numero % 2;
+            numero=numero/2;
+            i++;
+        }
+    }
+
+    else {
+        numero = -numero;
+        while (i < 16) {
+            vetor[i] = numero % 2;
+            numero=numero/2;
+            i++;
+        }
+
+        i=0;
+        while (vetor[i] != 1 && i < 16) {
+            i++;
+        }
+        
+        i++;
+        while (i < 16) {
+            if (vetor[i] == 1) {
+            vetor[i] = 0;
+            }
+            else if (vetor[i] == 0) {
+                vetor[i] = 1;
+            }
+            i++;
+        }
+    }
+
+    for (i = i-1; i >= 0; i--) {
+        printf("%d", vetor[i]);
+    }
+    printf("\n");
 }
 
 double real_para_float (int numero) {
@@ -144,6 +182,7 @@ int main(void) {
             case 5:
                 printf("Digite um número inteiro: \n");
                 scanf("%d", &numero);
+                base_10_para_base_sinal_16bits (numero);
                 break;
 
             case 6:
