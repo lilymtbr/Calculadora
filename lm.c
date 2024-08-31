@@ -2,7 +2,7 @@
 * Autora: Lisa Matubara
 * Período: 3º A
 * Disciplina: Infraestrutura de Hardware
-* Atividade: Calculadora didática de conversão entre bases e ponto flutuante de precisão simpes e dupla
+* Atividade: Calculadora didática de conversão entre bases e ponto flutuante de precisão simples e dupla
 * Data: 30/08/24
 *
 * Revisões e Atualizações:
@@ -114,14 +114,14 @@ void base_10_para_BCD (int numero) {
     printf("\nPasso a passo: convertendo %d para BCD.\n\n", numero);
     printf("Primeiro, cria-se um vetor de inteiros para armazenar os dígitos em BCD e uma variável i, que representa o índice dos elementos do vetor.\n\n");
     printf("Em seguida, extrai-se cada dígito decimal do número, começando pelo menos significativo, e converte-se esse dígito em seu equivalente binário de 4 bits.\n\n");
-    printf("Enquanto houver dígitos a serem processados, a conversão é realizada e os bits resultantes são armazenados no vetor.");
+    printf("Enquanto houver dígitos a serem processados, a conversão é realizada e os bits resultantes são armazenados no vetor.\n\n");
 
     int vetor[100];
     int digito;
     int i = 0;
     while (numero>0) {
         digito = numero%10;
-        printf("\n\nDigito %d em binário: ", digito);
+        printf("Digito %d em binário: ", digito);
         for (int j = 0; j<4; j++) {
             vetor[i] = digito % 2;
             digito=digito/2;
@@ -203,7 +203,7 @@ void base_10_para_base_sinal_16bits (int numero) {
         vetor[i] = 1;
         printf("Em seguida, aplica-se o complemento de 2: da direita para esquerda, os bits permanecem inalterados até o primeiro '1', e todos os bits subsequentes são invertidos.\n\n");
         printf("O bit de sinal é definido como 1.\n\n");
-        printf("Por fim, os bits do vetor são impressos, com o primeiro bit representando o sinal e os outros 15 correspondendo ao número.\n\n");
+        printf("Por fim, os bits do vetor são impressos, com o primeiro bit representando o sinal e os outros 15 correspondendo ao número.\n\nResposta: ");
 
     }
         
@@ -261,7 +261,7 @@ void real_para_float (double numero) {
     printf("\n\n");
 
     int expoente = cont + 127;
-    printf("Calcula-se o expoente ajustado com o bias de 127.\n\nExpoente = %d + 127 = %d.\n\n", cont, expoente);
+    printf("Calcula-se o expoente ajustado com o bias de 127.\n\nExpoente = %d.\n\n", expoente);
     printf("Converte-se o expoente ajustado para binário.\n\n");
 
     for (int j = 0; j < 8; j++) {
@@ -307,7 +307,7 @@ void real_para_float (double numero) {
         indice_vetor4++;
     }
     printf("\n\n");
-    printf("Imprime-ese o sinal (1 bit), o expoente (8 bits) e a mantissa (23 bits) na ordem correta para a representação em float.\nResposta:\n\n");
+    printf("Imprime-ese o sinal (1 bit), o expoente (8 bits) e a mantissa (23 bits) na ordem correta para a representação em float.\n\nResposta: ");
 
     for (int o = 0; o < 32; o++) {
         printf("%d", vetor4[o]);
@@ -368,7 +368,7 @@ void real_para_double (double numero) {
 
     
     int expoente = cont + 1023;
-    printf("Calcula-se o expoente ajustado com o bias de 1023.\n\nExpoente = %d + 1023 = %d.\n\n", cont, expoente);
+    printf("Calcula-se o expoente ajustado com o bias de 1023.\n\nExpoente = %d.\n\n", expoente);
     printf("Converte-se o expoente ajustado para binário.\n\n");
 
     for (int j = 0; j < 11; j++) {
@@ -418,7 +418,7 @@ void real_para_double (double numero) {
     }
 
     printf("\n\n");
-    printf("Imprime-ese o sinal (1 bit), o expoente (11 bits) e a mantissa (52 bits) na ordem correta para a representação em double.\nResposta:\n");
+    printf("Imprime-ese o sinal (1 bit), o expoente (11 bits) e a mantissa (52 bits) na ordem correta para a representação em double.\n\nResposta: ");
 
     for (int o = 0; o < 64; o++) {
         printf("%d", vetor4[o]);
